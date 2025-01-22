@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null); // Example user object: { role: "manager" }
   const navigate = useNavigate();
   
-  const url = 'http://localhost:3000'; // Backend URL
+  const url = 'https://hospital-food-management-r6so.onrender.com'; // Backend URL
 
 
   
