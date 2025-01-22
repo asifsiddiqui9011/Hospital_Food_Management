@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from '../../userContext/userContext';
-
+import './Login.css';
 
 const Signup = () => {
   const [signupData, setSignupData] = useState({

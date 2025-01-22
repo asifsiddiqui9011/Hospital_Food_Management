@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from '../../userContext/userContext';
-
+import './Login.css';
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -115,14 +115,14 @@ const Login = () => {
             />
           </span>
 
-          <span>
+          {/* <span>
             <p>
               <Link to="/forgot-password">Forgot Password?</Link>
             </p>
             <p>
               <Link to="/signup">Sign Up</Link>
             </p>
-          </span>
+          </span> */}
 
           <button type="submit" className="cancel-tkt-btn">
             Login
