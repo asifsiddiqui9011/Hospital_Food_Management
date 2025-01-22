@@ -1,0 +1,94 @@
+.hospital-manager-container {
+    padding: 20px;
+    overflow: auto;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+  }
+
+  .hospital-manager-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
+  
+  .hospital-manager-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .hospital-manager-table th,
+  .hospital-manager-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .hospital-manager-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .sort-container {
+    margin-bottom: 20px;
+  }
+  
+  .sort-container select {
+    padding: 8px;
+    margin-left: 10px;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .hospital-manager-container {
+    padding: 20px;
+  }
+  
+  .hospital-manager-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .hospital-manager-table th,
+  .hospital-manager-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .hospital-manager-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .sort-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .sort-container select {
+    padding: 8px;
+  }
+  
+  .delivery-status-filters {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  
+  .delivery-status-filters label {
+    font-size: 14px;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,195 @@
+.login-container{
+    display: flex;
+    justify-content:space-between;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2), -5px -5px 15px rgba(0,0,0,0.2);
+   background-color: white;
+   background-image:linear-gradient(rgba(172, 7, 238, 0.373),white);
+    z-index: 7;
+    color: balck;
+ 
+ }
+ 
+ 
+ .login-form-container{
+    max-width: 375px;
+    min-width: 225px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    color: balck;
+    padding: 40px 10px;
+ }
+ 
+ span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ 
+ .login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+ }
+ 
+ input,#age,#password{
+    height: 40px;
+    padding: 0px 5px;
+    width: 250px;
+    outline: none;
+    border: none;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    border-radius: 15px;
+ }
+ 
+ 
+ @media (max-width:765px) {
+    .login-container{
+       height: fit-content;
+       width: 375px;
+       font-size: xx-small;
+      
+    }
+ 
+    .login-container p {
+       font-size: small;
+       text-align: center;
+    }
+ 
+    .login-form button{
+       height: 35px;
+    }
+ 
+    .login-form input,#age,#password{
+       width: 150px;
+       height: 25px;
+       color: blueviolet
+    };
+ 
+ 
+ }
+ 
+ @media (max-width:400px) {
+    .login-container{
+       height: fit-content;
+       width: fit-content;
+       font-size: xx-small;
+       margin-left: 10px;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+    }
+ 
+    .login-container p {
+       font-size: 10px;
+       text-align: center;
+    }
+ 
+    .login-form button{
+       height: 35px;
+    }
+ 
+ 
+    .login-img-container{
+       height: fit-content;
+    }
+ 
+ }
+ 
+ 
+
+ /* General styles for the form container */
+.login-form-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   background-color: #f4f4f4;
+ }
+ 
+ .login-form {
+   width: 100%;
+   max-width: 400px;
+   padding: 20px;
+   background: #ffffff;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+ }
+ 
+ .login-form h2 {
+   text-align: center;
+   color: #333;
+   margin-bottom: 20px;
+ }
+ 
+ /* Input field styles */
+ .login-form input[type="text"],
+ .login-form input[type="email"],
+ .login-form input[type="password"],
+ .emaill,
+ .login-form select {
+   width: 100%;
+   padding: 10px;
+   margin: 10px 0 20px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   font-size: 16px;
+   background-color: #f9f9f9;
+   transition: border-color 0.3s ease, background-color 0.3s ease;
+ }
+ 
+ .login-form input[type="text"]:focus,
+ .login-form input[type="email"]:focus,
+ .login-form input[type="password"]:focus,
+ .login-form select:focus {
+   border-color: #007bff;
+   background-color: #ffffff;
+   outline: none;
+ }
+ 
+ /* Placeholder style for better visibility */
+ .login-form input::placeholder {
+   color: #888;
+   font-size: 14px;
+ }
+ 
+ /* Style for buttons */
+ .login-form button {
+   width: 100%;
+   padding: 10px;
+   background-color: #007bff;
+   color: #ffffff;
+   font-size: 16px;
+   font-weight: bold;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+ }
+ 
+ .login-form button:hover {
+   background-color: #0056b3;
+ }
+ 
+ /* Links for forgot password and signup */
+ .login-form a {
+   color: #007bff;
+   text-decoration: none;
+ }
+ 
+ .login-form a:hover {
+   text-decoration: underline;
+ }
+ 
+ /* Optional styling for p elements within spans */
+ .login-form span p {
+   font-size: 14px;
+   color: #333;
+   margin-bottom: 5px;
+ }
+ 

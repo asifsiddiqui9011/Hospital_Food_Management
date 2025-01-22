@@ -1,0 +1,56 @@
+/* Base styles for the sliding menu */
+.sliding-menu {
+    position: fixed;
+    top: 0;
+    left: -350px; /* Hidden off-screen */
+    width: 300px;
+    height: 100%;
+    background-color: #1976d2; /* Blue background */
+    color: white;
+    overflow-y: auto;
+    transition: all 0.5s ease; /* Smooth transition for sliding */
+    z-index: 1000;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* When menu is open, slide it into view */
+  .sliding-menu.open {
+    left: 0;
+  }
+  
+  /* Close button styling */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Styling for menu items */
+  .sliding-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sliding-menu li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .sliding-menu a {
+    text-decoration: none;
+    color: white;
+    display: block;
+  }
+  
+  .sliding-menu a:hover {
+    color: #d1e8ff; /* Lighter blue on hover */
+  }
+  
+  /* Ensure AppBar content is not hidden */
+  .AppBar {
+    z-index: 1100;
+  }
+  
