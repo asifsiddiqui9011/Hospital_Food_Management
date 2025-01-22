@@ -1,7 +1,7 @@
 const express = require('express');
 const mealTaskController = require('../controllers/mealTaskController');
 const {authenticateStaff} = require('../middleware/authenticateStaff');
-const authenticateManager = require('../middleware/authenticateManager');
+const {authenticateManager} = require('../middleware/authenticateManager');
 const router = express.Router();
 
 // Define routes

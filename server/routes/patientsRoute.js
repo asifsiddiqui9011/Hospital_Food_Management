@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAllPatients, getPatientById, createPatient, updatePatientById,deletePatientById,addFoodToPatientAndUpdateFood,removeFoodFromPatientAndUpdateFood} = require('../controllers/patientsController');
-const authenticateManager = require('../middleware/authenticateManager');
+const {authenticateManager} = require('../middleware/authenticateManager');
 const router = express.Router();
 
 // Controller functions (you need to implement these)

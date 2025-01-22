@@ -1,6 +1,6 @@
 const express = require('express');
 const foodController = require('../controllers/foodController');
-const authenticateManager = require('../middleware/authenticateManager');
+const { authenticateManager } = require('../middleware/authenticateManager');
 const router = express.Router();
 
 // Route to get all food items

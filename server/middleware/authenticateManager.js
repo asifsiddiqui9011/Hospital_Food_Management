@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
-const User = require("../models/User");
+const User = require("../models/user");
 const pantryStaff = require("../models/pantryStaff")
 
 // Authentication Middleware
-exports.authenticate = async (req, res, next) => {
+exports.authenticateManager = async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ message: "Authentication failed. No token provided." });
 
@@ -17,14 +17,4 @@ exports.authenticate = async (req, res, next) => {
   } catch (error) {
     res.status(401).json({ message: "Authentication failed" });
   }
-};
-
-// Role-Based Authorization Middleware
-exports.authorize = (...roles) => {
-  return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return res.status(403).json({ message: "Forbidden. You do not have access to this resource." });
-    }
-    next();
-  };
 };
