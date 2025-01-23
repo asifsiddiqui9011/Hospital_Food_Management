@@ -1,5 +1,8 @@
 import { Navigate } from 'react-router-dom';
-import { useUser } from '../../userContext/userContext';
+
+import  useUser from '../../UserContext/UserContext';
+
+import PropTypes from 'prop-types';
 
 const ProtectedRoute = ({ element, roles = [] }) => {
   const { user } = useUser();
@@ -13,6 +16,13 @@ const ProtectedRoute = ({ element, roles = [] }) => {
   }
 
   return element;
+
+}
+ProtectedRoute.propTypes = {
+  element: PropTypes.element.isRequired,
+  roles: PropTypes.arrayOf(PropTypes.string)
 };
+
+
 
 export default ProtectedRoute;
