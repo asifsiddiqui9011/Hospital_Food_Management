@@ -3,7 +3,7 @@ import axios from "axios";
 import "./AddMealTask.css";
 import MealTaskList from "./MealTaskList";
 import MealTaskListForPantry from "./MealTaskListForPantry";
-import { useUser } from "../../userContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 
 const AddMealTask = () => {
 
@@ -13,15 +13,16 @@ const AddMealTask = () => {
   const [selectedFoodId, setSelectedFoodId] = useState(null);
 
   // Fetch Food List
+  const fetchFoodList = async () => {
+    try {
+      const response = await axios.get(`${url}/api/food`);
+      setFoodList(response.data);
+    } catch (error) {
+      console.error("Error fetching food list", error);
+    }
+  };
   useEffect(() => {
-    const fetchFoodList = async () => {
-      try {
-        const response = await axios.get(`${url}/api/food`);
-        setFoodList(response.data);
-      } catch (error) {
-        console.error("Error fetching food list", error);
-      }
-    };
+   
     fetchFoodList();
   }, []);
 
@@ -45,6 +46,7 @@ const AddMealTask = () => {
         alert("Meal Task Assigned Successfully!");
         setShowModal(false);
         setSelectedFoodId(null);
+        fetchFoodList();
       } else {
         alert("Failed to assign meal task.");
       }

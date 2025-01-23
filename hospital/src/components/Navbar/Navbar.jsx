@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
-import { useUser } from '../../userContext/userContext';
+import { useUser } from '../../UserContext/UserContext';
 import './Navbar.css'; // Import custom CSS
 
 export default function ButtonAppBar() {

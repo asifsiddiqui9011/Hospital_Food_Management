@@ -41,7 +41,7 @@ exports.getPantryStaffById = async (req, res) => {
 // Update a pantry staff by ID
 exports.updatePantryStaffById = async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ['staffName', 'contactInfo', 'location', 'role', 'tasks'];
+    const allowedUpdates = ['staffName', 'role', 'tasks'];
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
     if (!isValidOperation) {

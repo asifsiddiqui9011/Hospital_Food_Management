@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./MealTaskList.css";
-import { useUser } from "../../userContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 
 const MealTaskList = () => {
 
@@ -12,21 +12,22 @@ const MealTaskList = () => {
   const [error, setError] = useState(null);
 
   // Fetch meal tasks from the backend
-  useEffect(() => {
-    const fetchMealTasks = async () => {
-      try {
-        const response = await fetch(`${url}/api/meals`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch meal tasks.");
-        }
-        const data = await response.json();
-        setMealTasks(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+  const fetchMealTasks = async () => {
+    try {
+      const response = await fetch(`${url}/api/meals`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch meal tasks.");
       }
-    };
+      const data = await response.json();
+      setMealTasks(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    
 
     fetchMealTasks();
   }, []);
@@ -45,7 +46,7 @@ const MealTaskList = () => {
         if (!response.ok) {
           throw new Error("Failed to remove the task.");
         }
-        setMealTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
+        fetchMealTasks();
       } catch (err) {
         setError(err.message);
       }

@@ -36,7 +36,7 @@ const getAllPatients = async (req, res) => {
         });
   
       res.status(200).send(patients);
-      console.log(patients,"patients")
+      // console.log(patients,"patients")
     } catch (error) {
       res.status(500).send(error);
     }

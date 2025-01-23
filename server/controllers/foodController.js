@@ -2,6 +2,7 @@ const Food = require('../models/food');
 const Patient = require('../models/patients');
 const MealTask = require('../models/mealTask');
 const mongoose = require('mongoose');
+const User = require('../models/User');
 // Helper function to check required fields
 const validateRequiredFields = (body, requiredFields) => {
     for (const field of requiredFields) {

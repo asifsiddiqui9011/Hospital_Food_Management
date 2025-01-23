@@ -5,27 +5,41 @@ import "./MealTaskList.css";
 
 const MealTaskForPreparationUpdate = () => {
 
-  const { url } = useUser();
+  const { url,user } = useUser();
   const [mealTasks, setMealTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   // Fetch meal tasks from the backend
-  useEffect(() => {
-    const fetchMealTasks = async () => {
-      try {
-        const response = await fetch(`${url}/api/meals`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch meal tasks.");
-        }
-        const data = await response.json();
-        setMealTasks(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+  const fetchMealTasks = async () => {
+    try {
+      // Retrieve the token from local storage
+      const token = localStorage.getItem("auth-token");
+
+      // Determine the URL based on the user's role
+      const userRole = user.role;
+      const apiUrl = userRole === "manager" 
+        ? `${url}/api/meals`
+        : `${url}/api/mealsToPreparationStaff`;
+
+      const response = await fetch(apiUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Pass the token here
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch meal tasks.");
       }
-    };
+      const data = await response.json();
+      setMealTasks(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+   
 
     fetchMealTasks();
   }, []);

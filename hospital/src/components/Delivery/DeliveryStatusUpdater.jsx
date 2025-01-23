@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./DeliveryStatusUpdater.css";
-import { useUser } from "../../userContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 
 const DeliveryStatusUpdater = () => {
   const [mealTasks, setMealTasks] = useState([]);
@@ -11,25 +11,31 @@ const DeliveryStatusUpdater = () => {
   const [error, setError] = useState(null);
   const [sortKey, setSortKey] = useState("floor"); // Default sort key
 
-  const { url } = useUser();
+  const { url,user } = useUser();
   // Fetch meal tasks with delivery statuses
   const fetchMealTasks = async () => {
     try {
       // Retrieve the auth token from localStorage
       const token = localStorage.getItem("auth-token");
-  
+      
       if (!token) {
         throw new Error("Authentication token not found.");
       }
-  
-      // Make the fetch request with the Authorization header
-      const response = await fetch(`${url}/api/mealss`, {
-        method: "GET",
+
+      const userRole = user.role;
+      const apiUrl = userRole === "manager" 
+        ? `${url}/api/meals`
+        : `${url}/api/mealsToDeliveryStaff`;
+
+      const response = await fetch(apiUrl, {
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include the token
+          Authorization: `Bearer ${token}`, // Pass the token here
         },
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch meal tasks.");
+      }
   
       if (!response.ok) {
         throw new Error("Failed to fetch meal tasks.");
@@ -75,7 +81,7 @@ const DeliveryStatusUpdater = () => {
       }
   
       const updatedMealTask = await response.json();
-      console.log("Updated Meal Task:", updatedMealTask);
+      // console.log("Updated Meal Task:", updatedMealTask);
   
       if (!updatedMealTask || !updatedMealTask.updatedMealTask) {
         throw new Error("Invalid response format.");

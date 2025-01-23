@@ -12,21 +12,22 @@ const HospitalManagerDeliveryStatus = () => {
 
   const { url } = useUser();
   // Fetch meal tasks
-  useEffect(() => {
-    const fetchMealTasks = async () => {
-      try {
-        const response = await fetch(`${url}/api/meals`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch meal tasks.");
-        }
-        const data = await response.json();
-        setMealTasks(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+  const fetchMealTasks = async () => {
+    try {
+      const response = await fetch(`${url}/api/meals`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch meal tasks.");
       }
-    };
+      const data = await response.json();
+      setMealTasks(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    
 
     fetchMealTasks();
   }, []);

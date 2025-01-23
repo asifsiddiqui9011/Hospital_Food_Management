@@ -61,6 +61,7 @@ exports.getAllMealTasks = async (req, res) => {
     }
 };
 
+//get meal task assigned to particular delivery staff
 exports.getMealTasksAssignedToDeliveryStaff = async (req, res) => {
    
       try {
@@ -89,6 +90,35 @@ exports.getMealTasksAssignedToDeliveryStaff = async (req, res) => {
       }
     };
     
+//get meal task assigned to particular preparation staff
+    exports.getMealTasksAssignedToPreparationStaff = async (req, res) => {
+   
+        try {
+          const preparationStaffId = req.user.id; // Assuming `req.user` contains the authenticated user data
+          console.log(preparationStaffId,"delid");
+          if (!preparationStaffId) {
+            return res.status(400).json({ message: "Preparation staff ID is missing." });
+          }
+  
+          const mealTasks = await MealTask.find({ preparationStaff: preparationStaffId })
+            .populate("foodId")
+            .populate("deliveryStatuses.patientId")
+            .populate("preparationStaff", "staffName role")
+            .populate("deliveryStaff", "staffName role");
+      
+          // If no tasks found, return a 404 response
+          if (!mealTasks || mealTasks.length === 0) {
+            return res
+              .status(404)
+              .json({ message: "No meal tasks assigned to this Preparation staff." });
+          }
+      
+          res.status(200).json(mealTasks);
+        } catch (error) {
+          res.status(500).json({ message: error.message });
+        }
+      };
+      
   
 
 // Get a single meal task by ID
@@ -187,12 +217,6 @@ exports.updatePreparationStatus = async (req, res) => {
     }
 
     try {
-        // Check if the user is a food preparation staff
-        const userId = req.user.id; // Assuming user ID is stored in req.user after authentication
-        const staff = await PantryStaff.findById(userId);
-        if (!staff || staff.role !== 'Food_Preparation') {
-            return res.status(403).json({ message: 'Unauthorized: Only food preparation staff can update preparation status.' });
-        }
 
         // Find the meal task
         const mealTask = await MealTask.findById(mealTaskId);

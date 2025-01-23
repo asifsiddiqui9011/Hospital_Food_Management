@@ -13,21 +13,28 @@ const DeliveryStatusTracker = () => {
 
   const { url } = useUser();
   // Fetch meal tasks with delivery statuses
-  useEffect(() => {
-    const fetchMealTasks = async () => {
-      try {
-        const response = await fetch(`${url}/api/meals`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch meal tasks.");
+  const fetchMealTasks = async () => {
+    try {
+      const authToken = localStorage.getItem("auth-token");
+      const response = await fetch(`${url}/api/mealss`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${authToken}`
         }
-        const data = await response.json();
-        setMealTasks(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch meal tasks.");
       }
-    };
+      const data = await response.json();
+      setMealTasks(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    
 
     fetchMealTasks();
   }, []);

@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   
   const url = 'https://hospital-food-management-r6so.onrender.com'; // Backend URL
-
+//  const url = 'http://localhost:3000'; // Backend UR
 
   
 
@@ -21,12 +21,11 @@ export const UserProvider = ({ children }) => {
 
         try {
           const decoded = jwtDecode(token); // Use the function as needed
-          console.log(decoded);
           setUser({ role: decoded.role, token });
           if (decoded.role === 'manager') {
           navigate('/hospital-manager-dashboard');
           } else if (decoded.role === 'Food_Preparation') {
-          navigate('/PantryStaff-dashboard');
+          navigate('/meal/preparationstaff');
           }else if (decoded.role === 'Delivery') {
             navigate('/delivery-dashboard');
             } else {
