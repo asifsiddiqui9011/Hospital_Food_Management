@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const User = require("../models/user.js");
 const PantryStaff = require("../models/pantryStaff");
 const JWT_SECRET = process.env.JWT_SECRET;
 
