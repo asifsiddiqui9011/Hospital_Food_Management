@@ -1,7 +1,5 @@
 
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { UserProvider } from './UserContext/UserContext';
+import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Navbar from './components/Navbar/Navbar';
 import Login from './components/Authentication/Login';
@@ -17,8 +15,7 @@ import HospitalManagerDeliveryStatus from './components/Delivery/HospitalManager
 
 function App() {
   return (
-    <BrowserRouter>
-      <UserProvider>
+    <>
         <Navbar />
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -33,8 +30,7 @@ function App() {
           <Route path="/hospital/delivery/statustrack" element={<ProtectedRoute element={<HospitalManagerDeliveryStatus />} roles={['manager']} />} />
           <Route path="/unauthorized" element={<h1>Unauthorized Access</h1>} />
         </Routes>
-      </UserProvider>
-    </BrowserRouter>
+    </>
   );
 }
 

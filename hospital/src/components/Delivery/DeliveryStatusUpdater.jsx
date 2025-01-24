@@ -1,9 +1,9 @@
 
 
 
-import React, { useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import "./DeliveryStatusUpdater.css";
-import { useUser } from "../../UserContext/UserContext";
+import { UserContext} from "../../context/UserContext";
 
 const DeliveryStatusUpdater = () => {
   const [mealTasks, setMealTasks] = useState([]);
@@ -11,7 +11,7 @@ const DeliveryStatusUpdater = () => {
   const [error, setError] = useState(null);
   const [sortKey, setSortKey] = useState("floor"); // Default sort key
 
-  const { url,user } = useUser();
+  const { url,user } = useContext(UserContext);
   // Fetch meal tasks with delivery statuses
   const fetchMealTasks = async () => {
     try {

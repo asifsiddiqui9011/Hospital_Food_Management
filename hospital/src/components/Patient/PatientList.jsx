@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./PatientList.css";
-import { useUser } from "../../userContext/userContext";
+import { UserContext } from "../../context/UserContext";
 
 const PatientList = () => {
 
-  const { url } = useUser();
+  const { url } = useContext(UserContext);
   const [patients, setPatients] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editForm, setEditForm] = useState({

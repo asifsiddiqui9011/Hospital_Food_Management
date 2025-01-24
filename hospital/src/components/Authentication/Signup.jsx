@@ -1,9 +1,9 @@
 
 
 
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUser } from '../../userContext/userContext';
+import { UserContext } from '../../context/UserContext';
 import './Login.css';
 
 const Signup = () => {
@@ -14,7 +14,7 @@ const Signup = () => {
     role: "", // Dropdown for role selection (manager, Food_Preparation, or Delivery)
   });
 
-  const { login,url } = useUser();
+  const { login,url } = useContext(UserContext);
 
   const [additionalFields, setAdditionalFields] = useState({}); // Dynamic fields based on role
  

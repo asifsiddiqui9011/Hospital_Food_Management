@@ -1,7 +1,7 @@
 
-import React, { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./HospitalManagerDeliveryStatus.css";
-import { useUser } from "../../userContext/userContext";
+import { UserContext } from "../../context/UserContext";
 
 const HospitalManagerDeliveryStatus = () => {
   const [mealTasks, setMealTasks] = useState([]);
@@ -10,7 +10,7 @@ const HospitalManagerDeliveryStatus = () => {
   const [sortKey, setSortKey] = useState("mealType"); // Default sort key
   const [deliveryStatusFilter, setDeliveryStatusFilter] = useState(""); // Delivery status filter
 
-  const { url } = useUser();
+  const { url } = useContext(UserContext);
   // Fetch meal tasks
   const fetchMealTasks = async () => {
     try {

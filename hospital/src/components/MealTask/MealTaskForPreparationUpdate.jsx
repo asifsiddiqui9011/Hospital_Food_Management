@@ -1,11 +1,11 @@
 
-import { useUser } from "../../userContext/userContext";
-import  { useEffect, useState } from "react";
+import { UserContext } from "../../context/UserContext";
+import  { useContext, useEffect, useState } from "react";
 import "./MealTaskList.css";
 
 const MealTaskForPreparationUpdate = () => {
 
-  const { url,user } = useUser();
+  const { url,user } = useContext(UserContext);
   const [mealTasks, setMealTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

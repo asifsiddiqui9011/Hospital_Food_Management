@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import './FoodList.css'
-import { useUser } from "../../userContext/userContext";
+import { UserContext } from "../../context/UserContext";
 
 
 const FoodList = () => {
 
-  const { url } = useUser();  
+  const { url } = useContext(UserContext);  
 
   const [foods, setFoods] = useState([]); // State to store food data
   const [editingId, setEditingId] = useState(null); // State to manage editing

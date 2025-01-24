@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import "./DeliveryStatusUpdater";
-import { useUser } from "../../userContext/userContext";
+import { UserContext } from "../../context/UserContext";
 
 const DeliveryStatusTracker = () => {
   const [mealTasks, setMealTasks] = useState([]);
@@ -11,7 +11,7 @@ const DeliveryStatusTracker = () => {
   const [showModal, setShowModal] = useState(false);
   
 
-  const { url } = useUser();
+  const { url } = useContext(UserContext);
   // Fetch meal tasks with delivery statuses
   const fetchMealTasks = async () => {
     try {

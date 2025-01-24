@@ -1,13 +1,13 @@
-import React from 'react'
+import  { useContext } from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import FoodList from './FoodList';
 import './AddFood.css';
-import { useUser } from '../../userContext/userContext';
+import { UserContext } from '../../context/UserContext';
 
 const AddFood = () => {
 
-    const { url } = useUser();
+    const { url } = useContext(UserContext);
     const [food, setFood] = useState({
         mealType: "",
         ingredients: "",

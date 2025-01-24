@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios';
 import { useState } from 'react';
 import './AddPatient.css'
 import PatientList from './PatientList';
 import AddFoodToPatient from './AddFoodToPatient';
-import { useUser } from '../../userContext/userContext';
+import { UserContext } from '../../context/UserContext';
 const AddPatient = () => {
 
 
-  const { url } = useUser();
+  const { url } = useContext(UserContext);
     const [patient, setPatient] = useState({
         patientName: "",
         diseases: "",

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./AddMealTask.css";
 import MealTaskList from "./MealTaskList";
 import MealTaskListForPantry from "./MealTaskListForPantry";
-import { useUser } from "../../UserContext/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 const AddMealTask = () => {
 
-  const { url } = useUser();
+  const { url } = useContext(UserContext);
   const [foodList, setFoodList] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedFoodId, setSelectedFoodId] = useState(null);

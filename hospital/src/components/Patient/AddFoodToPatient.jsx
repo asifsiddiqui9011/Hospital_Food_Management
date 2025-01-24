@@ -1,11 +1,11 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./PatientList.css";
-import { useUser } from "../../userContext/userContext";
+import { UserContext } from "../../context/UserContext";
 
 const AddFoodToPatient = () => {
 
-  const { url } = useUser();
+  const { url } = useContext(UserContext);
   const [patients, setPatients] = useState([]);
   const [foodList, setFoodList] = useState([]);
   const [selectedPatientId, setSelectedPatientId] = useState(null);

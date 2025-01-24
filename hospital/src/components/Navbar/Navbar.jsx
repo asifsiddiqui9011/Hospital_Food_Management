@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,12 +8,12 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
-import { useUser } from '../../UserContext/UserContext';
+import { UserContext } from '../../context/UserContext';
 import './Navbar.css'; // Import custom CSS
 
 export default function ButtonAppBar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const { user, logout } = useUser(); // Access user data from context
+  const { user, logout } = useContext(UserContext); // Access user data from context
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

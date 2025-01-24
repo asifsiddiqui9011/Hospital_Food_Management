@@ -1,11 +1,10 @@
-import { Navigate } from 'react-router-dom';
-
-import  useUser from '../../UserContext/UserContext';
-
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Navigate } from 'react-router-dom';
+import {UserContext} from '../../context/UserContext';
 
 const ProtectedRoute = ({ element, roles = [] }) => {
-  const { user } = useUser();
+  const { user } = useContext(UserContext);
 
   if (!user) {
     return <Navigate to="/login" replace />;
@@ -16,13 +15,11 @@ const ProtectedRoute = ({ element, roles = [] }) => {
   }
 
   return element;
-
 }
+
 ProtectedRoute.propTypes = {
   element: PropTypes.element.isRequired,
   roles: PropTypes.arrayOf(PropTypes.string)
 };
-
-
 
 export default ProtectedRoute;

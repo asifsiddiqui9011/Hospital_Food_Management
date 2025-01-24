@@ -1,17 +1,19 @@
 
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { useUser } from '../../userContext/userContext';
+import {UserContext} from "../../context/UserContext"
 import './Login.css';
 
 const Login = () => {
+
+  const {login,url} = useContext(UserContext);
   const [userData, setUserData] = useState({
     role: "",
     email: "",
     password: "",
   });
 
-  const { login,url } = useUser();
+ 
   
 
   const changeHandler = (e) => {
